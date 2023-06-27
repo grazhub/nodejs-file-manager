@@ -1,6 +1,7 @@
 import os from 'os';
 import readline from 'readline';
 import { createFile, readFile, renameFile, copyFile, moveFile, deleteFile } from './commands/basic.js';
+import { compressFile, decompressFile } from './commands/compress.js';
 import { calculateHash } from './commands/hash.js';
 import { changeDir, getUpperDir, listDir } from './commands/navigation.js';
 import { getOsInform } from './commands/os.js';
@@ -62,6 +63,15 @@ const goCommand = (command) => {
 		case 'hash':
 			const pathToHashFile = option1;
 			calculateHash(pathToHashFile);
+			break;
+
+		case 'compress':
+			const [pathToCompressFile, pathToCompressDist] = [option1, option2];
+			compressFile(pathToCompressFile, pathToCompressDist);
+			break;
+		case 'decompress':
+			const [pathToDecompressFile, pathToDecompressDist] = [option1, option2];
+			decompressFile(pathToDecompressFile, pathToDecompressDist);
 			break;
 
 		default:
