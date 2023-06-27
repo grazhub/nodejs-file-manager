@@ -1,6 +1,7 @@
 import os from 'os';
 import readline from 'readline';
 import { createFile, readFile, renameFile, copyFile, moveFile, deleteFile } from './commands/basic.js';
+import { calculateHash } from './commands/hash.js';
 import { changeDir, getUpperDir, listDir } from './commands/navigation.js';
 import { getOsInform } from './commands/os.js';
 import { getUsername } from './utils/getUsername.js';
@@ -56,6 +57,11 @@ const goCommand = (command) => {
 
 		case 'os':
 			getOsInform(option1);
+			break;
+
+		case 'hash':
+			const pathToHashFile = option1;
+			calculateHash(pathToHashFile);
 			break;
 
 		default:
