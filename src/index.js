@@ -2,6 +2,7 @@ import os from 'os';
 import readline from 'readline';
 import { createFile, readFile, renameFile, copyFile, moveFile, deleteFile } from './commands/basic.js';
 import { changeDir, getUpperDir, listDir } from './commands/navigation.js';
+import { getOsInform } from './commands/os.js';
 import { getUsername } from './utils/getUsername.js';
 
 const homedir = os.homedir();
@@ -51,6 +52,10 @@ const goCommand = (command) => {
 		case 'rm':
 			const pathToRemovedFile = option1;
 			deleteFile(pathToRemovedFile);
+			break;
+
+		case 'os':
+			getOsInform(option1);
 			break;
 
 		default:
